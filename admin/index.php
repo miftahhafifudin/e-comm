@@ -25,6 +25,13 @@ if(!isset($_SESSION['username'])){
 <body>
     <div id="wrapper">
         <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+            <?php
+            include '../koneksi.php';
+
+            $get = mysqli_query($koneksi, "select * from content_nav");
+            $br = mysqli_fetch_array($get);
+
+            ?>
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -32,19 +39,19 @@ if(!isset($_SESSION['username'])){
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php">TITTLE</a> 
+                <a class="navbar-brand" href="index.php"><?= $br['title_nav'] ?></a> 
             </div>
             <div class="navbar-text" style="color:white;">
-                ORGANIZATION
+                <?= $br['name_nav'] ?>
             </div>
             <div class="navbar-text">
-                <img src="assets/img/find_user.png" width="30" height="30">
+                <img src="../foto_content/<?= $br['logo_nav']; ?>" width="30" height="30">
             </div>
             <div class="btn-group pull-right" style="padding-top: 1%;
                                                     padding-right: 1%;
                                                     float: right;">
                 <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-chevron-down"></i>
+                    <img src="assets/img/find_user.png" width="30" height="30">
                 </button>
                     <ul class="dropdown-menu slidedown">
                         <li>
@@ -89,6 +96,29 @@ if(!isset($_SESSION['username'])){
                     <li>
                         <a href="?url=employee"><i class="fa fa-dashboard fa-3x"></i> EMPLOYEE LIST</a>
                     </li>
+                    <li>
+                        <a href="#"><i class="fa fa-sitemap fa-3x"></i>CONTENT<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="?url=navbar_content">NAVBAR CONTENT</a>
+                            </li>
+                            <li>
+                                <a href="?url=home_content">HOME CONTENT</a>
+                            </li>
+                            <li>
+                                <a href="?url=about_us_content">ABOUT US CONTENT</a>
+                            </li>
+                            <li>
+                                <a href="?url=contact_us_content">CONTACT US CONTENT</a>
+                            </li>
+                        </ul>
+                      </li>
+                    <li>
+                        <a href="?url=about_us"><i class="fa fa-dashboard fa-3x"></i> ABOUT US</a>
+                    </li>
+                    <li>
+                        <a href="?url=contact_us"><i class="fa fa-dashboard fa-3x"></i> CONTACT US</a>
+                    </li>  
                 </ul>
             </div>
             
@@ -101,6 +131,13 @@ if(!isset($_SESSION['username'])){
                  ?>
             </div>
              <!-- /. PAGE INNER  -->
+            <footer>
+                <a href="index.php">HOME</a>|
+                <a href="?url=produk">PRODUCT LIST</a>|
+                <a href="?url=service">SERVICE LIST</a>|
+                <a href="?url=project">PROJECT LIST</a>|
+                <a href="?url=employee">EMPLOYEE LIST</a>|
+            </footer>
             </div>
          <!-- /. PAGE WRAPPER  -->
         </div>

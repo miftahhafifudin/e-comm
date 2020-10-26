@@ -1,4 +1,7 @@
 <?php
+include '../koneksi.php';
+$get = mysqli_query($koneksi, "select * from content_home");
+$br = mysqli_fetch_array($get);
 if(isset($_GET['url'])){
     $url = $_GET['url'];
 
@@ -37,7 +40,31 @@ if(isset($_GET['url'])){
 
         case 'ubah_produk';
             include 'ubah_produk.php';
-            break; 
+            break;
+
+        case 'navbar_content';
+            include 'navbar_content.php';
+            break;
+
+        case 'home_content';
+            include 'home_content.php';
+            break;
+
+        case 'about_us';
+            include 'about_us.php';
+            break;
+
+        case 'about_us_content';
+            include 'ubah_about_us.php';
+            break;   
+
+        case 'contact_us';
+            include 'contact_us.php';
+            break;
+
+        case 'contact_us_content';
+            include 'ubah_contact_us.php';
+            break;
     }
 }else{
     ?>
@@ -46,28 +73,34 @@ if(isset($_GET['url'])){
     <div class="col-md-9 col-sm-12 col-xs-12">                     
         <div >
             <div class="panel-body">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            <?= $br['isi_home']; ?>
             </div>
         </div>            
     </div>
         <div class="col-md-3 col-sm-12 col-xs-12">                       
-        <div class="panel panel-primary text-center no-boder">
-            <div class="panel-body">
-                <i class="fa fa-bar-chart-o fa-5x"></i>
-                <h3>120 GB </h3>
-            </div>
-            <div >
-               Disk Space Available                
-            </div>
+        <div class="text-center">
+          <img src="../foto_content/<?= $br['home_img']; ?>" width="200">
+            <p>
+            <?= $br['caption_home']; ?>
+            </p>
         </div>
     </div>
 </div>
-
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
 <div class="row"> 
     <div class="col-md-6 col-sm-12 col-xs-12">                     
         <div>
             <div class="panel-body">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <b>To Contact Us</b>
+                <p/>
+                <p/>
+                <p/>
+                Your Address line
             </div>
         </div>            
     </div>
